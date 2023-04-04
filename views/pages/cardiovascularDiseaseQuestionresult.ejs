@@ -1,25 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">     
-  <header>
+<html lang="en">
+  <head>
     <%- include('../partials/header'); %>
-  </header>  
+  </head>
+
   <body>
     <div id="container">
       <h4 id='result'>Model Result: </h4>
       <p id="result-message"></p>
     </div>
+
+    <div id="card-container">
+      <div id="card1" class="card"></div>
+      <div id="card2" class="card"></div>
+       <!-- <div id="hospital-card" class="'card"></div> -->
+    </div>
+
+    <footer>
+      <%- include('../partials/footer-new'); %>
+    </footer>
+
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const result = Number(urlParams.get('result'));
+
+      let resultMessageElement = document.getElementById("result-message");
+      if (result === 1) {
+        resultMessageElement.textContent = "Yes, you have the possibility of cardiovascular disease.";
+        document.getElementById("container").classList.add("hospital-recommendation");
+
+        let card = document.createElement("div");
+        card.classList.add("hospital-card");
+
+        let cardTitle = document.createElement("h3");
+        cardTitle.textContent = "Hospital ranking in Cardiovascular Disease";
+
+        let cardContent = document.createElement("ol");
+        const hospitalRanking = [
+          "University Health Network Health",
+          "St Michaels Hospital Toronto	CAN	Health",
+          "Montreal Heart Institute	CAN	Health",
+          "Toronto General Hospital	CAN	Health",
+          "Population Health Research Institute	CAN	Health",
+          "University of Ottawa Heart Institute	CAN	Health",
+          "Providence Health Care	CAN	Health",
+          "Hamilton Health Sciences	CAN	Health"
+        ];
+
+        for (let i = 0; i < hospitalRanking.length; i++) {
+          const listItem = document.createElement("li");
+          listItem.textContent = hospitalRanking[i];
+          cardContent.appendChild(listItem);
+        }
+
+        card.appendChild(cardTitle);
+        card.appendChild(cardContent);
+
+        //remove card1 and card2
+        const cardContainer = document.getElementById("card-container");
+        cardContainer.removeChild(document.getElementById("card1"));
+        cardContainer.removeChild(document.getElementById("card2"));
+
+        document.getElementById("container").appendChild(card);
+      
+
+      } else if (result === 0) {
+        resultMessageElement.textContent = "No, you may not suffer from cardiovascular disease.";
+        document.getElementById("container").classList.add("healthy-diet-recommendation");
+        let card1 = document.getElementById("card1");
+        card1.classList.add("card-1");
+        let card1Title = document.createElement("h3");
+        let card1Content = document.createElement("p");
+        card1Title.textContent = "Choose healthy eating habits";
+        const healthyHabits = ["Include more fruits and vegetables in your diet", "Reduce the intake of high-fat, high-sugar, and high-salt foods", "Avoid overeating"];
+        const card1List = document.createElement("ul");
+        for (let i = 0; i < healthyHabits.length; i++) {
+          const listItem = document.createElement("li");
+          listItem.textContent = healthyHabits[i];
+          card1List.appendChild(listItem);
+        }
+        card1Content.appendChild(card1List);
+        card1.appendChild(card1Title);
+        card1.appendChild(card1Content);
+
+        let card2 = document.getElementById("card2");
+        card2.classList.add("card-2");
+        let card2Title = document.createElement("h3");
+        let card2Content = document.createElement("p");
+        card2Title.textContent = "Schedule regular physical exams";
+        const physicalExams = ["Schedule regular physical exams to monitor your health", "Consult with your doctor if you experience any unusual symptoms"];
+        const card2List = document.createElement("ul");
+        for (let i = 0; i < physicalExams.length; i++) {
+          const listItem = document.createElement("li");
+          listItem.textContent = physicalExams[i];
+          card2List.appendChild(listItem);
+        }
+        card2Content.appendChild(card2List);
+        card2.appendChild(card2Title);
+        card2.appendChild(card2Content);
+      }
+      else{
+        resultMessageElement.textContent = "There is something error happened. Please try again.";
+      }
+    </script>
+
+    <style>
+      header {
+        padding-bottom: 20px;
+      }
+      #container {
+        background-color: #99CCCC;
+        margin-top: 120px; 
+        padding-top: 0;
+        margin-left: 40px;
+        margin-right: 240px;
+      }
+
+      #card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        margin-top: 40px;
+      }
+
+      .card {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .card-1 {
+        border-top: 5px solid #1e88e5;
+      }
+
+      .card-1 ul {
+        list-style-type: none;
+      }
+
+      .card-1 li::before {
+        content: "• ";
+      }
+
+      .card-2 ul {
+        list-style-type: none;
+      }
+
+      .card-2 li::before {
+        content: "• ";
+      }
+
+      .card-2 {
+        border-top: 5px solid #43a047;
+      }
+
+      .hospital-card {
+        border-top: 5px solid #e4f12d;
+      }
+
+      .hospital-card ol {
+        list-style: decimal;
+        padding-left: 20px;
+      }
+
+      .hospital-card li {
+        margin-bottom: 10px;
+      }
+
+    </style>
   </body>
-  <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const result = Number(urlParams.get('result'));
-    let resultMessageElement = document.getElementById("result-message");
-    if(result === 1){
-      resultMessageElement.textContent = "Our test result is that you have the possibility of cardiovascular disease, it is recommended that you go to the hospital for further examination.";
-    } else if(result === 0){
-      resultMessageElement.textContent = "The result of our test is that you may not suffer from cardiovascular disease. If you have other symptoms, it is recommended that you go to the hospital for further examination.";
-    }
-    
-    // document.getElementById('container').innerHTML = "<p>Model Result：" + result + "</p>"
-  </script>
 </html>

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">     
   <header>
@@ -11,15 +12,15 @@
     <div id="q_items">
       <form class="contact-form" role="form">
         <div id="inp_items">
-            <label for="Ages">Ages (Please input your ages in days):</label><br>
+            <!-- <label for="Ages">Ages (Please input your ages in days):</label><br>
             <input type="number" id="Ages" name="Ages"><br>
             <label for="Height">Height (Please input your height in cm):</label><br>
             <input type="number" id="Height" name="Height"><br>
             <label for="Weight">Weight (Please input your weight in kg):</label><br>
-            <input type="number" id="Weight" name="Weight"><br>
+            <input type="number" id="Weight" name="Weight"><br> -->
             <!--上面为输入值--> 
             <!-- it is input style -->
-          <div class="form-group">
+          <!-- <div class="form-group">
               <label for="exampleFormControlSelect1">Please tell us your Gender: </label>
               <select class="form-control" id="gender" name="gender">
                 <option value="1">Female</option>
@@ -64,7 +65,7 @@
               <option value="2">above normal</option>
               <option value="3">well above normal</option>
             </select>
-          </div>
+          </div> -->
 
           <div class="form-group">
             <label for="exampleFormControlSelect1">Systolic blood pressure</label>
@@ -162,10 +163,10 @@ function jump(data_medical){
     axios.post('https://internal-medicine-api-deploy.herokuapp.com/data_generate', {
       // 给后端传数据 search是button接收的字符 你根据数据格式调整一些再
       // 也可以增加字段 key-value这种 testtxt就是我加的
-        age:data_medical.Ages, height: data_medical.Height, weight: data_medical.Weight, active: data_medical.active,alco:data_medical.alcohol,
-        cholesterol:data_medical.cholesterol,ap_lo:data_medical.diastolicBloodPressure, gender: data_medical.gender, 
-        gluc: data_medical.gluc, smoke: data_medical.smoke,ap_hi:data_medical.systolicBloodPressure
-
+        // age:data_medical.Ages, height: data_medical.Height, weight: data_medical.Weight, active: data_medical.active,alco:data_medical.alcohol,
+        // cholesterol:data_medical.cholesterol,ap_lo:data_medical.diastolicBloodPressure, gender: data_medical.gender, 
+        // gluc: data_medical.gluc, smoke: data_medical.smoke,ap_hi:data_medical.systolicBloodPressure
+        ap_hi:data_medical.systolicBloodPressure,ap_lo:data_medical.diastolicBloodPressure
         /*search: search_keyword*/
     })
     .then(function (response) {
@@ -174,6 +175,7 @@ function jump(data_medical){
         if (predata) {
           alert('success');
           // Need change the front end local url to cloud when deploy
+          // var url = new URL("http://localhost:5000/cardiovascularDiseaseQuestionresult");
           var url = new URL("http://www.e-hospital.ca/cardiovascularDiseaseQuestionresult");
           url.searchParams.append('result', predata);
           window.location.replace(url);

@@ -5,14 +5,49 @@
     <%- include('../partials/header'); %>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <!-- <link href="bootstrap.min.css" rel="stylesheet"> -->
-    <meta name="author" content="Xiaolin Zhou">
+    <meta name="author" content="Xiaolin">
     <style>
+      header {
+        height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .carousel-item:not(.active) {
+        transition: transform .6s ease-in-out;
+        opacity: 0.5;
+      }
+
+      .carousel-item-next.carousel-item-left,
+      .carousel-item-prev.carousel-item-right {
+        transform: translateX(0);
+      }
+
+      .carousel-item-next,
+      .carousel-item-prev {
+        transform: translateX(0);
+      }
+
+      .carousel-item.active {
+        transition: opacity 0.6s ease-in-out;
+        opacity: 1;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 5%;
+      }
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
+      }
+      .carousel-item {
+         height: 400px; /* set the height to 400 pixels */
       }
 
       @media (min-width: 768px) {
@@ -62,7 +97,6 @@
     <!-- <link href="Fei_Test\carousel.css" rel="stylesheet"> -->
   </header>  
   <body>
-    
 <main>
 
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -73,27 +107,32 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="images/cardiovascularimage.jpg" alt="cardiovascular disease" class="d-block w-100">
+        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
         <div class="container">
           <div class="carousel-caption text-start">
             <h1>Cardiovascular disease</h1>
-            <p>Cardiology is a branch of medicine that deals with disorders of the heart and the cardiovascular system. The field includes medical diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure, valvular heart disease and electrophysiology. </p>
+            <br>
+            <!-- <p>Cardiology is a branch of medicine that deals with disorders of the heart and the cardiovascular system. The field includes medical diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure, valvular heart disease and electrophysiology. </p> -->
             <p><a href="/cardiovascularDiseaseQuestionnaire" class="btn btn-lg btn-primary" >Test Now</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="images/Gastroenterology.jpg" class="d-block w-100" alt="Gastroenterology">
+        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
         <div class="container">
           <div class="carousel-caption">
             <h1>Gastroenterology</h1>
-            <p>Gastroenterology is the branch of medicine focused on the digestive system and its disorders.</p>
+            <!-- <p>Gastroenterology is the branch of medicine focused on the digestive system and its disorders.</p> -->
+            <br>
             <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+        <img src="images/Pulmonology.jpg" class="d-block w-100" alt="Pulmonology">
+        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> -->
         <div class="container">
           <div class="carousel-caption text-end">
             <h1>Pulmonology</h1>
@@ -123,19 +162,22 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <img src="images/Oncology.png" alt="Oncology" class="bd-placeholder-img rounded-circle" width="140" height="140">
+        <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
         <h2 class="fw-normal"> Oncology</h2>
         <p> Oncology is a branch of medicine that deals with the study, treatment, diagnosis and prevention of cancer. A medical professional who practices oncology is an oncologist. </p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <img src="images/Nephrology.png" alt="Nephrology" class="bd-placeholder-img rounded-circle" width="140" height="140">
+        <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
         <h2 class="fw-normal">Nephrology</h2>
         <p>Nephrology is a specialty of adult internal medicine and pediatric medicine that concerns the study of the kidneys, specifically normal kidney function and kidney disease , the preservation of kidney health, and the treatment of kidney disease. </p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <img src="images/Geriatrics.png" alt="Geriatrics" class="bd-placeholder-img rounded-circle" width="140" height="140">
+        <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
         <h2 class="fw-normal">Geriatrics</h2>
         <p>Geriatrics, or geriatric medicine, is a medical specialty focused on providing care for the unique health needs of older adults. It aims to promote health by preventing, diagnosing and treating disease in older adults. </p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
